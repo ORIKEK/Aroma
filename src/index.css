@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --color-earth-brown: #3E2723;
+  --color-cream: #FFF8E1;
+  --color-gold: #FFC107;
+  --color-amber-accent: #FFB300;
+}
+
+@layer base {
+  html {
+    font-size: 18px; /* Minimum body text 18px */
+  }
+  body {
+    @apply font-sans antialiased bg-earth-brown text-cream;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+  }
+  h1, h2, h3 {
+    @apply font-black;
+    font-size: clamp(2rem, 5vw, 4rem); /* Headings 32px+ */
+  }
+}
+
+/* Mobile hit area and active states */
+@layer components {
+  .btn-mobile {
+    @apply min-h-[64px] flex items-center justify-center transition-all duration-150 active:scale-95 active:brightness-90;
+  }
+}
+
+/* Disable hover on touch devices */
+@media (hover: hover) {
+  .hover-effect:hover {
+    @apply brightness-110;
+  }
+}
+
+@media (hover: none) {
+  .hover-effect:hover {
+    @apply brightness-100;
+  }
+}
+
